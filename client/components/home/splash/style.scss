@@ -1,0 +1,50 @@
+@import 'palette.scss';
+
+.splash {
+  text-align: center;
+  margin: 48px 0;
+
+  &-header {
+    margin: 48px;
+
+    &__main {
+      font-size: 2.0em;
+    }
+  }
+
+  &-images {
+    user-select: none;
+
+    .splash-image {
+      display: inline-block;
+
+      &__number {
+        text-align: center;
+
+        .number-container {
+          display: inline-block;
+          border-radius: 50%;
+          background-color: $palette-blue;
+          width: 36px;
+          height: 36px;
+
+          .number {
+            color: $palette-white;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+          }
+        }
+      } 
+
+      &__image img {
+        height: 240px;
+      }
+
+      &__desc {
+        line-height: 1.2;
+      }
+    }
+  }
+}

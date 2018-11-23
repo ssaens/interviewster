@@ -1,0 +1,16 @@
+.textbox {
+  margin: 12px 0;
+
+  &__label {
+    display: block;
+  }
+
+  &__input {
+    width: 100%;
+    padding: 7px;
+    font-size: 0.9em;
+    display: inline-block;
+    box-sizing: border-box;
+    vertical-align: top;
+  }
+}

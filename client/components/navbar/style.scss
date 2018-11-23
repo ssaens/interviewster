@@ -1,0 +1,23 @@
+#navbar {
+  padding: 24px 48px;
+
+  .header-icon {
+    display: inline-block;
+    font-size: 1.4em;
+    margin-right: 24px;
+  }
+
+  .header-left {
+    display: inline-block;
+
+    &__item {
+      display: inline-block;
+      margin: 0 12px;
+    }
+  }
+
+  .header-right {
+    display: inline-block;
+    float: right;
+  }
+}

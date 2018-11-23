@@ -1,0 +1,8 @@
+.card_item {
+  display: inline-block;
+  margin: 0 12px;
+}
+
+.card_item:last-child {
+  margin-right: 0;
+}

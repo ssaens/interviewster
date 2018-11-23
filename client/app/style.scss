@@ -1,0 +1,30 @@
+body {
+  margin: 0;
+  font-family: 'Hind', sans-serif;
+  font-weight: 300;
+}
+
+a {
+  cursor: pointer;
+}
+
+a, a:visited {
+  text-decoration: none;
+  color: inherit;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.bold {
+  font-weight: 500;
+}
+
+.rel {
+  position: relative;
+}
+
+.app-main-view {
+  margin: 0 144px;
+}

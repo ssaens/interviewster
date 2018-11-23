@@ -1,0 +1,19 @@
+.guide-start {
+  .search-roles {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &__search, &__submit {
+      margin: 0 4px;
+    }
+
+    &__search {
+      width: 296px;
+    }
+  }
+
+  .popular-roles {
+    margin: 48px;
+  }
+}

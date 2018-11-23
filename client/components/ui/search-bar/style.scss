@@ -1,0 +1,33 @@
+@import '../../../palette.scss';
+
+.search-bar {
+  width: 100%;
+  border-radius: 4px;
+  overflow: hidden;
+
+  &__input, &__button {
+    padding: 7px;
+    font-size: 0.9em;
+    display: inline-block;
+    box-sizing: border-box;
+    height: 36px;
+    vertical-align: top;
+  }
+
+  &__input {
+    border-left: 1px solid $palette-grey;
+    border-top: 1px solid $palette-grey;
+    border-bottom: 1px solid $palette-grey;
+    border-right: 0;
+    width: calc(100% - 36px);
+  }
+
+  &__button {
+    text-align: center;
+    border: 1px solid $palette-blue;
+    background-color: $palette-blue;
+    color: $palette-white;
+    float: right;
+    width: 36px;
+  }
+}
