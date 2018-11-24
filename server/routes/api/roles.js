@@ -2,24 +2,49 @@ const mongoose = require('mongoose');
 const router = require('express').Router();
 
 const Role = mongoose.model('Role');
-
-router.get('/popular', (req, res, next) => {
-
-});
+const Skill = mongoose.model('Skill');
 
 router.get('/', (req, res, next) => {
+  const query = {};
+  const sort = { createdAt: 'desc' };
+  const { popular, q } = req.query;
 
+  if (popular) {
+    sort.popularity = 'desc';
+  }
+
+  if (q) {
+    query.name = new RegExp(q, 'i');
+  }
+
+  let request = Role.find(query).sort(sort);
+  if (popular) {
+    request = request.limit(10);
+  }
+
+  request.exec().then(skills => {
+    res.json(skills);
+  }).catch(next);
 });
 
 router.post('/', (req, res, next) => {
-  const role = new Role();
-
   const { name, skills } = req.body;
+  const role = new Role();
   role.name = name;
+  role.skills = skills;
 
-  role.save().then(() =>
+  const updateSkills = Skill.updateMany({
+    _id: { $in: skills }
+  }, {
+    $inc: { popularity: 1 }
+  });
+
+  Promise.all([
+    role.save(),
+    updateSkills
+  ]).then(() => 
     res.json(role.toJSON())
-  ).catch(next);
+  ).catch(next); 
 });
 
 module.exports = router;

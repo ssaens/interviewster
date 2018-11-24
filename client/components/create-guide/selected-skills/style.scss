@@ -1,0 +1,33 @@
+@import 'palette.scss';
+
+.selected-skills {
+  display: inline-block;
+  margin: 0 4px;
+  
+  .selected-skill-tag {
+    background-color: $palette-lblue;
+    display: inline-block;
+    margin: 0 4px 4px 4px;
+    border-radius: 4px;
+    padding: 4px 28px 4px 16px;
+
+    &:hover {
+      box-shadow: $palette-shadow;
+    }
+
+    .close {
+      cursor: pointer;
+      font-size: 1.2em;
+      position: absolute;
+      display: inline-block;
+      margin-right: 12px;
+      right: 0;
+      top: 50%;
+      transform: translateY(-45%);
+
+      &:hover {
+        color: $palette-white;
+      }
+    }
+  }
+}

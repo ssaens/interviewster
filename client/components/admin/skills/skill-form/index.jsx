@@ -7,7 +7,7 @@ class SkillForm extends React.PureComponent {
   render() {
     const { model, onAdd, onDelete, onReorder, onSubmit, busy } = this.props;
     return (
-      <form onSubmit={onSubmit}>
+      <div>
         <Textbox 
           label='name' 
           placeholder='Ex: Leadership' 
@@ -23,8 +23,8 @@ class SkillForm extends React.PureComponent {
           onDelete={onDelete} 
           onReorder={onReorder}
         />
-        <Button label='create' busy={busy} />
-      </form>
+        <Button label='create' busy={busy} onClick={onSubmit} />
+      </div>
     );
   }
 

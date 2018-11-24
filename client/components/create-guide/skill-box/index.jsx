@@ -19,7 +19,7 @@ class SkillBox extends React.Component {
         </div>
       );
     }
-    if (!skills.length) {
+    if (!skills || !skills.length) {
       return (
         <div className='skill-box'>
           <div className='skill-box__empty'>
@@ -31,7 +31,7 @@ class SkillBox extends React.Component {
     return (
       <div className='skill-box'>
         {skills.map(skill => 
-          <Skill model={skill} onClick={() => onClick && onClick(skill)} />
+          <Skill key={skill._id} model={skill} onClick={() => onClick && onClick(skill)} />
         )}
       </div>
     );

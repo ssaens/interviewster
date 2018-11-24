@@ -1,6 +1,6 @@
 @import 'palette.scss';
 
-.skill-box {
+.role-box {
   border-radius: 4px;
 
   &__empty {
@@ -11,7 +11,8 @@
     text-align: center;
   }
 
-  .skill-tag {
+  .role-tag {
+    text-transform: uppercase;
     display: inline-block;
     border-radius: 4px;
     background-color: $palette-grey;
@@ -21,6 +22,7 @@
 
     &:hover {
       cursor: pointer;
+      background-color: $palette-grey;
       box-shadow: $palette-shadow;
     }
   }

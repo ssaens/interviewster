@@ -24,6 +24,7 @@ roleSchema.plugin(uniqueValidator, {message: 'already exists.'});
 
 roleSchema.methods.toJSON = function () {
   return {
+    _id: this._id,
     name: this.name,
     skills: this.skills
   };

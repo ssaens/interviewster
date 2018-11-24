@@ -8,7 +8,12 @@ import {
   ASYNC_START,
   ASYNC_END,
   SKILLS_LOAD,
-  FEATURED
+  FEATURED,
+  CREATE_ROLE,
+  ATTACH_SKILL,
+  REMOVE_SKILL,
+  ROLES_LOAD,
+  POPULAR
 } from './action-types';
 
 const getUniqueNumber = (() => {
@@ -34,6 +39,13 @@ const defaultCreateSkillState = () => ({
   questions: []
 });
 
+const defaultCreateRoleState = () => ({
+  busy: false,
+  errors: null,
+  name: '',
+  skills: []
+});
+
 const defaultSkillsState = {
   featuredLoaded: false,
   featured: [],
@@ -47,7 +59,8 @@ const defaultRolesState = {
   popularLoaded: false,
   popular: [],
   rolesBusy: true,
-  roles: []
+  roles: [],
+  createRoleModel: defaultCreateRoleState()
 };
 
 const createSkill = (state, action) => {
@@ -63,21 +76,22 @@ const createSkill = (state, action) => {
       return {
         ...state,
         questions: action.payload
-      }
+      };
     }
     case ASYNC_START:
       return {
         ...state,
         busy: true
-      }
+      };
     case ASYNC_END: {
       if (action.payload.errors) {
         return {
           ...state,
+          busy: false,
           errors: action.payload.errors
         };
       } else {
-        return defaultCreateSkillState()
+        return defaultCreateSkillState();
       }
     }
     default:
@@ -91,20 +105,20 @@ const skills = (state=defaultSkillsState, action) => {
       return {
         ...state,
         createFormModel: createSkill(state.createFormModel, action)
-      }
+      };
     case SKILLS_LOAD: {
       if (action.subtype === FEATURED) {
         return {
           ...state,
           featured: action.payload,
           featuredLoaded: true
-        }
+        };
       } else {
         return {
           ...state,
           skills: action.payload,
           skillsBusy: false
-        }
+        };
       }
     }
     default:
@@ -112,8 +126,55 @@ const skills = (state=defaultSkillsState, action) => {
   }
 };
 
+const createRole = (state, action) => {
+  switch (action.subtype) {
+    case ATTACH_SKILL:
+    case REMOVE_SKILL:
+      return {
+        ...state,
+        skills: action.payload
+      };
+    case ASYNC_START:
+      return {
+        ...state,
+        busy: true
+      };
+    case ASYNC_END:
+      if (action.payload.errors) {
+        return {
+          ...state,
+          busy: false,
+          errors: action.payload.errors
+        };
+      } else {
+        return defaultCreateSkillState();
+      }
+    default:
+      return state;
+  }
+}
+
 const roles = (state=defaultRolesState, action) => {
   switch (action.type) {
+    case CREATE_ROLE:
+      return {
+        ...state,
+        createRoleModel: createRole(state.createRoleModel, action)
+      };
+    case ROLES_LOAD:
+      if (action.subtype === POPULAR) {
+        return {
+          ...state,
+          popular: action.payload,
+          popularLoaded: true
+        };
+      } else {
+        return {
+          ...state,
+          roles: action.payload,
+          rolesBusy: false 
+        }
+      }
     default:
       return state;
   }

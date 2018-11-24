@@ -24,7 +24,7 @@ const loadSkillsThunk = () => dispatch => {
 };
 
 const loadFeaturedThunk = () => dispatch => {
-  admin.getFeatured().then(res => {
+  admin.getFeaturedSkills().then(res => {
     return Promise.resolve(res.data);
   }).catch(err => {
     return Promise.resolve(err.response.data); 
