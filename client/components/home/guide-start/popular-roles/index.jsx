@@ -1,11 +1,17 @@
 import React from 'react';
 
-class PopularRoles extends React.Component {
+import RoleBox from 'components/create-guide/role-box';
+
+class PopularRoles extends React.PureComponent {
   render() {
+    const { roles, busy, onClick } = this.props;
     return (
       <div className='popular-roles'>
-        <div className='popular-roles__title bold'>
-          Popular Roles:
+        <div className='bold'>
+          Popular Roles
+        </div>
+        <div className='popular-list'>
+          <RoleBox roles={roles} busy={busy} onClick={onClick} />
         </div>
       </div>
     );

@@ -12,7 +12,7 @@ router.get('/', (req, res, next) => {
   }
 
   if (q) {
-    query.name = new RegExp(q, 'i');
+    query.name = new RegExp(`^${q}`, 'i');
   }
 
   Skill.find(query)

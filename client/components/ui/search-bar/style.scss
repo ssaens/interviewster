@@ -24,6 +24,25 @@
     border-right: 0;
     border-radius: 4px 0 0 4px;
     width: calc(100% - 36px);
+
+    &-tag {
+      background-color: $palette-lblue;
+      display: inline-block;
+      padding: 0 24px 0 12px;
+      transform: translateY(-2px);
+      border-radius: 4px;
+      text-transform: uppercase;
+
+      .clear {
+        display: inline-block;
+        position: absolute;
+        right: 10px;
+        top: 50%;
+        font-size: 1.2em;
+        transform: translateY(-46%);
+        cursor: pointer;
+      }
+    }
   }
 
   &__button {

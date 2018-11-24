@@ -1,3 +1,5 @@
+@import 'palette.scss';
+
 .guide-start {
   .search-roles {
     display: flex;
@@ -10,6 +12,30 @@
 
     &__search {
       width: 296px;
+    }
+
+    &__suggestions {
+      position: absolute;
+      border: 1px solid $palette-grey;
+      border-radius: 4px;
+      padding: 8px;
+      font-size: 0.9em;
+      width: 224px;
+      box-sizing: border-box;
+
+      &.hidden {
+        display: none;
+      }
+
+      .suggestion {
+        cursor: pointer;
+        padding: 4px 12px;
+        border-radius: 4px;
+
+        &:hover {
+          background-color: $palette-lblue;
+        }
+      }
     }
   }
 
