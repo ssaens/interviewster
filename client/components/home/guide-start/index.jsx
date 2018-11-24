@@ -27,7 +27,7 @@ const loadPopularThunk = () => dispatch => {
 
 const mapStateToProps = state => ({
   popularRoles: state.guide.meta.popularRoles,
-  loaded: state.guide.meta.loaded
+  loaded: state.guide.meta.loadedRoles
 });
 
 const mapDispatchToProps = dispatch => ({

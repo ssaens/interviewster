@@ -1,10 +1,21 @@
 import React from 'react';
+import { Route, Switch } from 'react-router-dom';
+import './style.scss';
 
-class CreateGuide extends React.Component {
+import NoMatch from '../no-match';
+import CGAddSkills from 'components/create-guide/cg-add-skills';
+
+class CreateGuide extends React.PureComponent {
   render() {
-    return (<div>
-      Hello
-    </div>)
+    return (
+      <div className='create-guide'>
+        <Switch>
+          <Route path='/create-guide/add-skills' component={CGAddSkills} />
+          <Route path='/create-guide/define-rubric' />
+          <Route component={NoMatch} />
+        </Switch>
+      </div>
+    );
   }
 }
 

@@ -1,0 +1,28 @@
+.cg-add-skills {
+  .select-skills {
+    .ss-selections {
+      &__left {
+        display: inline-block;
+      }
+
+      &__right {
+        display: inline-block;
+        float: right;
+
+        .select-dd-container {
+          display: inline-block;
+          width: 120px;
+          margin-left: 8px;
+        }
+      }
+    }
+
+    .ss-autosuggest {
+      margin-top: 24px;
+    }
+
+    .ss-featured {
+      margin: 24px 0;
+    }
+  }
+}

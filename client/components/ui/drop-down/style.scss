@@ -1,0 +1,53 @@
+@import 'palette.scss';
+
+.ui-drop-down {
+  width: 100%;
+  min-width: 120px;
+  display: inline-block;
+
+  &__selected {
+    box-sizing: border-box;
+    width: inherit;
+    cursor: pointer;
+    background-color: $palette-lblue;
+    display: inline-block;
+    border-radius: 4px;
+    font-size: 0.9em;
+    padding: 4px 28px 4px 16px;
+
+    .toggle-icon {
+      display: inline-block;
+      position: absolute;
+      right: 10px;
+      transform: translateY(1px);
+    }
+
+    &.open {
+      border-radius: 4px 4px 0 0;
+    }
+  }
+
+  &__options {
+    position: absolute;
+    background-color: white;
+    padding: 4px;
+    border-radius: 0 0 4px 4px;
+    width: 100%;
+    box-sizing: border-box;
+
+    &.hidden {
+      display: none;
+    }
+
+    .option {
+      font-size: 0.9em;
+      cursor: pointer;
+      padding: 0 12px;
+      border-radius: 4px;
+
+      &:hover {
+        background-color: $palette-lblue;
+      }
+    }
+  }
+}

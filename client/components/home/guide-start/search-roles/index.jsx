@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import classNames from 'classnames';
 import { debounce } from 'throttle-debounce';
+import { withRouter } from 'react-router-dom';
 
 import SingleInput from 'components/ui/search-bar/single-input';
 import { Button, SearchBar } from 'components/ui';
@@ -41,7 +42,7 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   autoSuggest: debounce(500, q => dispatch(autoSuggestThunk(q))),
   clearSuggest: () => dispatch({
-    type: GUIDE_ROLE_AUTOSUGGEST, payload: null
+    type: GUIDE_ROLE_AUTOSUGGEST, subtype: ASYNC_END, payload: null
   })
 });
 
@@ -91,8 +92,8 @@ class SearchRoles extends React.PureComponent {
   }
 
   onSubmit = () => {
-    console.log(this.props.selected);
+    this.props.history.push('/create-guide/add-skills');
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(SearchRoles);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(SearchRoles));

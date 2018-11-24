@@ -1,0 +1,72 @@
+@import 'palette.scss';
+
+.cg-workspace {
+  border-top: 1px solid black;
+  background-color: $palette-lgrey;
+  margin: 0 -144px;
+  padding: 0 144px;
+}
+
+.cg-description {
+  padding: 24px 0;
+
+  .progress {
+    width: 50%;
+    padding: 12px 0;
+
+    img {
+      width: 100%;
+    }
+  }
+
+  .main {
+    font-size: 2em;
+  }
+
+  .sub {
+    max-width: 80%;
+    padding: 12px 0;
+  }
+}
+
+.cgws {
+  padding: 24px 0;
+
+  &-role {
+    font-size: 1.4em;
+    padding-bottom: 12px;
+    margin-bottom: 12px;
+    border-bottom: 1px solid black;
+
+    .name {
+      background-color: $palette-lblue;
+      font-size: 0.8em;
+      padding: 0 24px;
+      border-radius: 4px;
+      margin: 0 4px;
+      transform: translateY(-2px);
+    }
+  }
+
+  &-nav {
+    overflow: hidden;
+
+    &__left {
+      display: inline-block;
+      transform: translateY(50%);
+    }
+
+    &__right {
+      display: inline-block;
+      float: right;
+
+      a {
+        margin-left: 12px;
+      }
+    }
+
+    a {
+      text-decoration: underline;
+    }
+  }
+}
