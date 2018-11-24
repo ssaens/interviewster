@@ -1,0 +1,18 @@
+.admin {
+  &-nav__item {
+    display: inline-block;
+    margin: 0 12px;
+
+    &:first-child {
+      margin-left: 0;
+    }
+  }
+
+  &-header {
+    font-size: 1.4em;
+  }
+
+  .admin-section {
+    margin-bottom: 16px;
+  }
+}

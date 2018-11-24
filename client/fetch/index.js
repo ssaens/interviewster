@@ -1,5 +1,6 @@
 import axios from 'axios';
 
+import admin from './admin';
 import users from './users';
 import { initToken } from './token';
 
@@ -8,7 +9,8 @@ function initFetch() {
   return initToken();
 }
 
-export { 
+export {
+  admin,
   initFetch,
   users
 };

@@ -1,10 +1,11 @@
 import React from 'react';
+import classNames from 'classnames';
 import './style.scss';
 
 class SearchBar extends React.Component {
   render() {
     return (
-      <div className='search-bar'>
+      <div className={classNames('search-bar', {'no-margin': this.props.noMargin})}>
         <input 
           className='search-bar__input'
           type='text' 
@@ -12,7 +13,7 @@ class SearchBar extends React.Component {
           onChange={this.props.onChange}
         />
         <div className='search-bar__button'>
-          S
+          <i className='icon ion-ios-search' />
         </div>
       </div>
     )

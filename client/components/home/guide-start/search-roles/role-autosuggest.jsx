@@ -7,6 +7,7 @@ class RoleAutosuggest extends React.Component {
     return (
       <div className='search-roles__search'>
         <SearchBar
+          noMargin
           placeholder='What role are you hiring for?'
           onChange={this.onQueryChange}
         />

@@ -6,7 +6,8 @@ const roleSchema = new mongoose.Schema({
     type: String,
     lowercase: true,
     unique: true,
-    index: true
+    index: true,
+    required: [true, 'can\'t be blank']
   },
   popularity: {
     type: Number,
@@ -20,5 +21,12 @@ const roleSchema = new mongoose.Schema({
 });
 
 roleSchema.plugin(uniqueValidator, {message: 'already exists.'});
+
+roleSchema.methods.toJSON = function () {
+  return {
+    name: this.name,
+    skills: this.skills
+  };
+};
 
 mongoose.model('Role', roleSchema);

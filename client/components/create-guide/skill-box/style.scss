@@ -1,0 +1,28 @@
+@import 'palette.scss';
+
+.skill-box {
+  border-radius: 4px;
+
+  &__empty {
+    user-select: none;
+    padding: 16px;
+    background-color: $palette-lgrey;
+    color: $palette-grey;
+    text-align: center;
+  }
+
+  .skill-tag {
+    display: inline-block;
+    border-radius: 4px;
+    background-color: $palette-grey;
+    padding: 4px 16px;
+    transition: 0.1s ease-in-out;
+    margin: 0 4px;
+
+    &:hover {
+      cursor: pointer;
+      background-color: $palette-grey;
+      box-shadow: $palette-shadow;
+    }
+  }
+}

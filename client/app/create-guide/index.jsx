@@ -1,9 +1,11 @@
 import React from 'react';
 
-class Form extends React.Component {
+class CreateGuide extends React.Component {
   render() {
-    return (<div></div>)
+    return (<div>
+      Hello
+    </div>)
   }
 }
 
-export default Form;
+export default CreateGuide;

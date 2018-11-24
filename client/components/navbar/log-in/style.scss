@@ -1,0 +1,12 @@
+.login-modal, .register-modal {
+  width: 360px;
+
+  .errors {
+    color: red;
+  }
+
+  .cancel {
+    padding: 4px 0;
+    text-align: center;
+  }
+}

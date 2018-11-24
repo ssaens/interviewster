@@ -6,6 +6,7 @@ import './style.scss';
 import { APP_LOAD } from 'reducer/action-types';
 import { initFetch, users } from '../fetch';
 import Navbar from '../components/navbar';
+import Admin from './admin';
 import Billing from './billing';
 import Blog from './blog';
 import CreateGuide from './create-guide';
@@ -63,6 +64,7 @@ class App extends React.Component {
             <Route path='/create-guide' component={CreateGuide} />
             <Route path='/billing' component={Billing} />
             <Route path='/blog' component={Blog} />
+            <Route path='/admin' component={Admin} />
             <Route exact path='/' component={Home} />
             <Route component={NoMatch} />
           </Switch>

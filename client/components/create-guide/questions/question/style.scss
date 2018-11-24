@@ -1,0 +1,56 @@
+@import 'palette.scss';
+
+.question {
+  display: flex;
+  margin-bottom: 12px;
+  font-size: 0.9em;
+  background-color: $palette-white;
+  transition: 0.1s ease-in-out;
+
+  &.dragged {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  }
+
+  &-text {
+    display: inline-block;
+    flex-grow: 1;
+
+    &__input {
+      width: 100%;
+      height: 100%;
+      border: 1px solid $palette-grey;
+      border-radius: 4px 0 0 4px;
+      box-sizing: border-box;
+      resize: none;
+      padding: 12px;
+      font-size: inherit;
+    }
+  }
+
+  &-rubric {
+    width: 36%;
+    display: inline-block;
+    border-top: 1px solid #a3a3a3;
+    border-bottom: 1px solid #a2a2a2;
+    box-sizing: border-box;
+  }
+
+  &-control {
+    width: 24px;
+    border: 1px solid $palette-grey;
+    box-sizing: border-box;
+    text-align: center;
+
+    .drag-handle {
+      cursor: grab;
+    }
+
+    .close {
+      position: absolute;
+      left: 50%;
+      bottom: 0;
+      transform: translateX(-50%);
+      cursor: pointer;
+    }
+  }
+}

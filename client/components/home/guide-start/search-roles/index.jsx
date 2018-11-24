@@ -11,7 +11,6 @@ class SearchRoles extends React.Component {
         <div className='search-roles__submit'>
           <Button 
             label='Get Started' 
-            onClick={() => console.log('here')}
           />
         </div>
       </div>

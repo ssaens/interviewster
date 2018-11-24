@@ -4,14 +4,17 @@ class Roles extends React.Component {
   render() {
     return (
       <div className='roles'>
-        <div className='admin-subheader bold'>
-          Roles
+        <div className='bold'>
+          Popular Roles
         </div>
-        <div>
-          
+        <div className='bold'>
+          All Roles
+        </div>
+        <div className='bold'>
+          Create New Role
         </div>
       </div>
-    )
+    );
   }
 }
 
