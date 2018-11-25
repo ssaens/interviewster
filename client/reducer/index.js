@@ -23,8 +23,15 @@ const reducer = combineReducers({
 });
 
 const routeMiddleware = routerMiddleware(history);
-const middleware = applyMiddleware(routeMiddleware, thunk, createLogger());
-const store = createStore(reducer, composeWithDevTools(middleware));
+const middleware = [ routeMiddleware, thunk ];
+let composeFn = compose;
+
+if (!__IS_PRODUCTION__) {
+  middleware.push(createLogger());
+  composeFn = composeWithDevTools;
+}
+
+const store = createStore(reducer, composeFn(applyMiddleware(...middleware)));
 
 export {
   history,

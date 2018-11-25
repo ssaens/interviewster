@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './style.scss';
 
 import { LOGOUT } from 'reducer/action-types';
@@ -11,7 +12,7 @@ class AuthCard extends React.Component {
           <a onClick={this.props.onLogout}>Log out</a>
         </div>
         <div className='card_item'>
-          {this.props.user.username}
+          <Link to='/guides'>{this.props.user.username}</Link>
         </div>
       </div>
     )

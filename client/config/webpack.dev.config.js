@@ -1,4 +1,5 @@
 const path = require('path');
+const webpack = require('webpack');
 
 module.exports = {
   mode: 'development',
@@ -53,6 +54,11 @@ module.exports = {
       }
     ]
   },
+  plugins: [
+    new webpack.DefinePlugin({
+      __IS_PRODUCTION__: JSON.stringify(false)
+    })
+  ],
   resolve: {
     modules: [
       path.join(__dirname, ".."), 

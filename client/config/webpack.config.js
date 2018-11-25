@@ -1,4 +1,5 @@
 const path = require('path');
+const webpack = require('webpack');
 
 module.exports = {
   mode: 'production',
@@ -53,6 +54,11 @@ module.exports = {
       }
     ]
   },
+  plugins: [
+    new webpack.DefinePlugin({
+      __IS_PRODUCTION__: JSON.stringify(true)
+    })
+  ],
   resolve: {
     modules: [
       path.join(__dirname, ".."), 
