@@ -43,7 +43,7 @@ const mapStateToProps = state => ({
   isAuthed: state.auth.user,
   creatingGuide: state.guide.meta.creatingGuide,
   activeModal: state.guide.meta.activeModal,
-  redirect: state.guide.meta.redirect
+  meta: state.guide.meta
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -112,9 +112,9 @@ const WaitModal = props => (
 
 class CGDefineRubrics extends React.PureComponent {
   render() {
-    const { model, redirect, activeModal, creatingGuide } = this.props;
-    if (redirect) {
-      model.redirect = null;
+    const { model, meta, activeModal, creatingGuide } = this.props;
+    if (meta.redirect) {
+      meta.redirect = null;
       return <Redirect to='/guides' />
     }
     if (!model.role) {

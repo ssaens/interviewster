@@ -40,7 +40,6 @@ const guideModelDefaultState = {
   skills: [],
   questions: [],
   duration: 30,
-  redirect: null
 };
 
 const guideMetaDefaultState = {
@@ -52,7 +51,8 @@ const guideMetaDefaultState = {
   suggestedRoles: null,
   suggestedSkills: null,
   creatingGuide: false,
-  activeModal: null
+  activeModal: null,
+  redirect: null
 }
 
 const model = (state=guideModelDefaultState, action) => {

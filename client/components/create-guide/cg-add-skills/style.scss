@@ -3,6 +3,7 @@
     .ss-selections {
       &__left {
         display: inline-block;
+        max-width: 70%;
       }
 
       &__right {
@@ -23,6 +24,16 @@
 
     .ss-featured {
       margin: 24px 0;
+    }
+  }
+
+  .guide-request-auth {
+    text-align: center;
+
+    .ctas {      
+      button {
+        margin: 4px 0;
+      }
     }
   }
 }
