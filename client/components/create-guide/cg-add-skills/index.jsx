@@ -25,7 +25,21 @@ import {
 } from 'reducer/action-types';
 import { admin } from 'fetch';
 
-const createGuideThunk = model => dispatch => {
+const skipThunk = () => (dispatch, getState) => {
+  dispatch({ type: GUIDE_TO_RUBRIC });
+  const baseModel = getState().guide.model;
+  const model = {
+    role: baseModel.role,
+    skills: baseModel.skills.map(skill => skill.name),
+    questions: baseModel.questions.map(question => ({
+      text: question.text,
+      rubric: question.rubric.map(item => ({
+        points: item.points,
+        desc: item.desc
+      }))
+    })),
+    duration: baseModel.duration
+  };
   dispatch({
     type: GUIDE_CREATE,
     subtype: ASYNC_START
@@ -56,7 +70,6 @@ const loadFeaturedThunk = () => dispatch => {
 };
 
 const mapStateToProps = state => ({
-  model: state.guide.model,
   role: state.guide.model.role,
   skills: state.guide.model.skills,
   featuredSkills: state.guide.meta.featuredSkills,
@@ -95,7 +108,7 @@ const mapDispatchToProps = dispatch => ({
   onFinish: () => dispatch({
     type: GUIDE_TO_FINISH
   }),
-  createGuide: model => dispatch(createGuideThunk(model))
+  onSkip: () => dispatch(skipThunk())
 });
 
 const AuthModal = props => (
@@ -193,7 +206,7 @@ class CGAddSkills extends React.PureComponent {
               </div>
               <div className='cgws-nav__right'>
                 <Button label='Continue' onClick={this.continue} />
-                <a to='/create-guide/define-rubric' onClick={this.skip}>Skip</a>
+                <a onClick={this.skip}>Skip</a>
               </div>
             </div>
           </div>
@@ -211,19 +224,7 @@ class CGAddSkills extends React.PureComponent {
     if (!this.props.isAuthed) {
       this.props.requestAuth();
     } else {
-      const model = {
-        role: this.props.model.role,
-        skills: this.props.model.skills.map(skill => skill.name),
-        questions: this.props.model.questions.map(question => ({
-          text: question.text,
-          rubric: question.rubric.map(item => ({
-            points: item.points,
-            desc: item.desc
-          }))
-        })),
-        duration: this.props.model.duration
-      }
-      this.props.createGuide(model);
+      this.props.onSkip();
     }
   }
 }

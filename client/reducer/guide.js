@@ -93,6 +93,7 @@ const model = (state=guideModelDefaultState, action) => {
           });
         }
       }
+      console.log('model:', questions)
       return {
         ...state,
         questions: questions

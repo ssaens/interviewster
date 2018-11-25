@@ -15,7 +15,7 @@ const RubricItem = props => (
 class Rubric extends React.Component {
   render() {
     const rubricItems = this.props.model.map(item => 
-      <RubricItem points={item.points} desc={item.desc} />
+      <RubricItem key={item._id} points={item.points} desc={item.desc} />
     );
     return (
       <div className='rubric'>

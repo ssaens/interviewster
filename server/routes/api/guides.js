@@ -34,9 +34,9 @@ router.post('/', auth.required, (req, res, next) => {
 
   Promise.all([
     guide.save(),
-    Role.update({ _id: role._id }, { $inc: { popularity: 1 }}),
+    Role.updateMany({ _id: role._id }, { $inc: { popularity: 1 }}),
   ]).then(() => {
-    return User.update({ _id: user }, { $push: { guides: guide._id }})
+    return User.updateOne({ _id: user }, { $push: { guides: guide._id }})
   }).then(() => {
     return res.json(guide.toJSON());
   }).catch(next);
