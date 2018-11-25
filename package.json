@@ -6,7 +6,7 @@
   "scripts": {
     "watch": "node scripts/watch",
     "build": "node scripts/build",
-    "start": "node server"
+    "start": "node scripts/build && node server"
   },
   "author": "",
   "license": "ISC",
