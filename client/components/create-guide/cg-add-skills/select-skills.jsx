@@ -40,9 +40,14 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   autoSuggest: debounce(500, q => dispatch(autoSuggestThunk(q))),
-  clearSuggest: () => dispatch({
-    type: GUIDE_SKILL_AUTOSUGGEST, subtype: ASYNC_END, payload: null
-  }),
+  clearSuggest: () => {
+    dispatch({
+      GUIDE_SKILL_AUTOSUGGEST, subtype: ASYNC_START, payload: ''
+    });
+    dispatch({
+      type: GUIDE_SKILL_AUTOSUGGEST, subtype: ASYNC_END, payload: null
+    });
+  },
   selectDuration: duration => dispatch({
     type: GUIDE_SELECT_DURATION, payload: duration
   })
