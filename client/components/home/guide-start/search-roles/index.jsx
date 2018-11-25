@@ -13,12 +13,7 @@ import {
   GUIDE_ROLE_AUTOSUGGEST
 } from 'reducer/action-types';
 
-const autoSuggestThunk = q => (dispatch, getState) => {
-  dispatch({
-    type: GUIDE_ROLE_AUTOSUGGEST,
-    subtype: ASYNC_START,
-    payload: q
-  });
+const _fetch = debounce(500, (q, dispatch, getState) => {
   admin.getRoles(q).then(res => {
     if (q === getState().guide.meta.waitingFor) {
       return Promise.resolve(res.data);
@@ -32,6 +27,15 @@ const autoSuggestThunk = q => (dispatch, getState) => {
     subtype: ASYNC_END,
     payload
   }));
+});
+
+const autoSuggestThunk = q => (dispatch, getState) => {
+  dispatch({
+    type: GUIDE_ROLE_AUTOSUGGEST,
+    subtype: ASYNC_START,
+    payload: q
+  });
+  _fetch(q, dispatch, getState);
 };
 
 const mapStateToProps = state => ({
@@ -40,7 +44,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  autoSuggest: debounce(500, q => dispatch(autoSuggestThunk(q))),
+  autoSuggest: q => dispatch(autoSuggestThunk(q)),
   clearSuggest: () => {
     dispatch({
       type: GUIDE_ROLE_AUTOSUGGEST, subtype: ASYNC_START, payload: ''
