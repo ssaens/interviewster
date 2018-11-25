@@ -10,6 +10,7 @@
     width: inherit;
     cursor: pointer;
     background-color: $palette-lblue;
+    color: white;
     display: inline-block;
     border-radius: 4px;
     font-size: 0.9em;
@@ -28,6 +29,7 @@
   }
 
   &__options {
+    z-index: 50;
     position: absolute;
     background-color: white;
     padding: 4px;
@@ -47,6 +49,7 @@
 
       &:hover {
         background-color: $palette-lblue;
+        color: white;
       }
     }
   }

@@ -1,0 +1,34 @@
+.cg-define-rubric {
+  .define-rubric {
+    .ss-selections {
+      &__left {
+        display: inline-block;
+      }
+
+      &__right {
+        display: inline-block;
+        float: right;
+
+        .select-dd-container {
+          display: inline-block;
+          width: 120px;
+          margin-left: 8px;
+        }
+      }
+    }
+
+    .dd-edit-rubric {
+      padding: 12px 0;
+    }
+  }
+
+  .guide-request-auth {
+    text-align: center;
+
+    .ctas {      
+      button {
+        margin: 4px 0;
+      }
+    }
+  }
+}

@@ -1,4 +1,4 @@
-const secret = process.env.NODE_ENV === 'production' ? SECRET : 'secret';
+const secret = process.env.NODE_ENV === 'production' ? process.env.SECRET : 'secret';
 
 module.exports = {
   secret

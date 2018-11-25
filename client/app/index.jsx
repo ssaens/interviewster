@@ -11,6 +11,7 @@ import Billing from './billing';
 import Blog from './blog';
 import CreateGuide from './create-guide';
 import Home from './home';
+import Guides from './guides';
 import HowItWorks from './how-it-works';
 import NoMatch from './no-match';
 
@@ -65,6 +66,7 @@ class App extends React.Component {
             <Route path='/billing' component={Billing} />
             <Route path='/blog' component={Blog} />
             <Route path='/admin' component={Admin} />
+            <Route path='/guides' component={Guides} />
             <Route exact path='/' component={Home} />
             <Route component={NoMatch} />
           </Switch>

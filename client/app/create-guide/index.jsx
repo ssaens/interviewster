@@ -4,6 +4,7 @@ import './style.scss';
 
 import NoMatch from '../no-match';
 import CGAddSkills from 'components/create-guide/cg-add-skills';
+import CGDefineRubric from 'components/create-guide/cg-define-rubric';
 
 class CreateGuide extends React.PureComponent {
   render() {
@@ -11,7 +12,7 @@ class CreateGuide extends React.PureComponent {
       <div className='create-guide'>
         <Switch>
           <Route path='/create-guide/add-skills' component={CGAddSkills} />
-          <Route path='/create-guide/define-rubric' />
+          <Route path='/create-guide/define-rubric' component={CGDefineRubric} />
           <Route component={NoMatch} />
         </Switch>
       </div>

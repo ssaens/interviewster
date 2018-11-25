@@ -147,7 +147,7 @@ const createRole = (state, action) => {
           errors: action.payload.errors
         };
       } else {
-        return defaultCreateSkillState();
+        return defaultCreateRoleState();
       }
     default:
       return state;

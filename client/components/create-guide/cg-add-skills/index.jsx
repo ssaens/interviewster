@@ -10,7 +10,8 @@ import {
   GUIDE_LOAD,
   FEATURED,
   GUIDE_ATTACH_SKILL,
-  GUIDE_REMOVE_SKILL
+  GUIDE_REMOVE_SKILL,
+  GUIDE_TO_RUBRIC
 } from 'reducer/action-types';
 import { admin } from 'fetch';
 
@@ -42,7 +43,8 @@ const mapDispatchToProps = dispatch => ({
   onRemoveSkill: skill => dispatch({
     type: GUIDE_REMOVE_SKILL,
     payload: skill
-  })
+  }),
+  onContinue: () => dispatch({ type: GUIDE_TO_RUBRIC })
 });
 
 class CGAddSkills extends React.PureComponent {
@@ -87,8 +89,8 @@ class CGAddSkills extends React.PureComponent {
                 <Link to='/'>&#8249; Back</Link>
               </div>
               <div className='cgws-nav__right'>
-                <Button label='Continue' />
-                <Link to='/create-guide/define-rubrics'>Skip</Link>
+                <Button label='Continue' onClick={this.continue} />
+                <Link to='/create-guide/define-rubric'>Skip</Link>
               </div>
             </div>
           </div>
@@ -97,8 +99,10 @@ class CGAddSkills extends React.PureComponent {
     );
   }
 
-  onAdd = skill => console.log(skill);
-  onRemove = skill => console.log(skill);
+  continue = () => {
+    this.props.onContinue();
+    this.props.history.push('/create-guide/define-rubric');
+  }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(CGAddSkills);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(CGAddSkills));

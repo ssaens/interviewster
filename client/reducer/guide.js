@@ -10,14 +10,37 @@ import {
   GUIDE_SKILL_AUTOSUGGEST,
   GUIDE_ATTACH_SKILL,
   GUIDE_REMOVE_SKILL,
-  GUIDE_SELECT_DURATION
+  GUIDE_SELECT_DURATION,
+  GUIDE_TO_RUBRIC,
+  GUIDE_ADD_QUESTION,
+  GUIDE_DELETE_QUESTION,
+  GUIDE_REORDER_QUESTION,
+  GUIDE_REQUEST_AUTH,
+  GUIDE_CREATE,
+  MODAL_OPEN,
+  MODAL_CLOSE,
+  LOGIN,
+  REGISTER,
+  GUIDE_TO_FINISH
 } from './action-types';
+
+const getUniqueNumber = (() => {
+  let nextUniqueNumber = 0;
+  return () => ++nextUniqueNumber;
+})();
+
+const makeQuestion = () => ({
+  _id: getUniqueNumber(),
+  text: '',
+  rubric: []
+});
 
 const guideModelDefaultState = {
   role: null,
   skills: [],
   questions: [],
-  duration: 30
+  duration: 30,
+  redirect: null
 };
 
 const guideMetaDefaultState = {
@@ -27,7 +50,9 @@ const guideMetaDefaultState = {
   featuredSkills: [],
   waitingFor: null,
   suggestedRoles: null,
-  suggestedSkills: null
+  suggestedSkills: null,
+  creatingGuide: false,
+  activeModal: null
 }
 
 const model = (state=guideModelDefaultState, action) => {
@@ -39,7 +64,7 @@ const model = (state=guideModelDefaultState, action) => {
         skills: action.payload ? [ ...action.payload.skills ] : []
       }
     case GUIDE_ATTACH_SKILL: {
-      if (!state.skills.find(skill => skill._id === action.payload._id)) {
+      if (!state.skills.find(skill => skill._id === action.payload._id) & state.skills.length < 8) {
         return {
           ...state,
           skills: [ ...state.skills, action.payload ]
@@ -58,6 +83,42 @@ const model = (state=guideModelDefaultState, action) => {
         ...state,
         duration: action.payload
       };
+    case GUIDE_TO_RUBRIC: {
+      const questions = [];
+      for (const skill of state.skills) {
+        for (const question of skill.questions) {
+          questions.push({ 
+            ...question, 
+            rubric: [ ...question.rubric.map(item => ({ ...item })) ] 
+          });
+        }
+      }
+      return {
+        ...state,
+        questions: questions
+      };
+    }
+    case GUIDE_ADD_QUESTION: {
+      return {
+        ...state,
+        questions: [ ...state.questions, makeQuestion() ]
+      };
+    }
+    case GUIDE_DELETE_QUESTION: {
+      return {
+        ...state,
+        questions: state.questions.filter(q => q._id !== action.payload._id)
+      }
+    }
+    case GUIDE_REORDER_QUESTION: {
+      return {
+        ...state,
+        questions: action.payload
+      }
+    }
+    case GUIDE_TO_FINISH: {
+      return guideModelDefaultState
+    }
     default:
       return state;
   }
@@ -114,7 +175,35 @@ const meta = (state=guideMetaDefaultState, action) => {
         };
       }
     }
-    
+    case GUIDE_REQUEST_AUTH: {
+      if (action.subtype === MODAL_OPEN) {
+        return { ...state, activeModal: true };
+      } else if (action.subtype === MODAL_CLOSE) {
+        return { ...state, activeModal: false };
+      } else if (action.subtype === LOGIN) {
+        return { ...state, activeModal: false };
+      } else if (action.subtype === REGISTER) {
+        return { ...state, activeModal: false };
+      } else {
+        return state;
+      }
+    }
+    case GUIDE_CREATE: {
+      if (action.subtype === ASYNC_START) {
+        return { ...state, creatingGuide: 'request' };
+      } else if (action.subtype === ASYNC_END) {
+        if (action.payload.errors) {
+          return { ...state, creatingGuide: null };
+        } else {
+          return { ...state, creatingGuide: 'done' };
+        }
+      } else {
+        return state;
+      }
+    }
+    case GUIDE_TO_FINISH: {
+      return { ...guideMetaDefaultState, redirect: '/guides' };
+    }
     default:
       return state;
   }

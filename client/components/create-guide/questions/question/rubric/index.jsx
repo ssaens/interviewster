@@ -23,7 +23,7 @@ class Rubric extends React.Component {
           Rubric
         </div>
         <div className='rubric-body'>
-          {rubricItems}
+          {rubricItems.length ? rubricItems : 'No Items'}
         </div>
       </div>
     );

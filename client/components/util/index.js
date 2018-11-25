@@ -1,5 +1,7 @@
 import Modal from './modal';
+import UnderConstruction from './under-construction'
 
 export {
-  Modal
+  Modal,
+  UnderConstruction
 };

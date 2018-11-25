@@ -11,7 +11,7 @@ class Question extends React.Component {
     return (
       <div className={classNames('question', {dragged: itemSelected !== 0})}>
         <div className='question-text rel'>
-          <textarea className='question-text__input' onInput={this.onInput} />
+          <textarea defaultValue={item.text} className='question-text__input' onInput={this.onInput} />
         </div>
         <div className='question-rubric'>
           <Rubric model={item.rubric} />

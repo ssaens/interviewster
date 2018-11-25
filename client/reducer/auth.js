@@ -6,7 +6,8 @@ import {
   MODAL_OPEN,
   MODAL_CLOSE,
   ASYNC_START,
-  ASYNC_END
+  ASYNC_END,
+  GUIDE_REQUEST_AUTH
 } from './action-types';
 
 const defaultState = {
@@ -27,10 +28,23 @@ export default (state=defaultState, action) => {
       return { ...defaultState };
     }
 
-    case MODAL_OPEN:
-      return { ...state, activeModal: action.subtype };
+    case MODAL_OPEN: {
+      if (action.subtype === LOGIN || action.subtype === REGISTER) {
+        return { ...state, activeModal: action.subtype };
+      } else {
+        return state;
+      }
+    }
     case MODAL_CLOSE:
       return { ...state, activeModal: null, errors: null, busy: null };
+
+    case GUIDE_REQUEST_AUTH: {
+      if (action.subtype === LOGIN || action.subtype === REGISTER) {
+        return { ...state, activeModal: action.subtype };
+      } else {
+        return state;
+      }
+    }
 
     case ASYNC_START: {
       if (action.subtype === LOGIN || action.subtype === REGISTER) {

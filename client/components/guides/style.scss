@@ -1,0 +1,69 @@
+@import 'palette.scss';
+
+.guide-list {
+  .header {
+    font-size: 1.4em;
+    border-bottom: 1px solid black;
+    margin-bottom: 12px;
+  }
+
+  &__elem {
+    display: inline-block;
+    vertical-align: top;
+    margin: 12px 42px;
+
+    .g-card {
+      height: 256px;
+      width: 200px;
+      box-sizing: border-box;
+      transition: 0.1s ease-in-out;
+
+      &:hover {
+        box-shadow: $palette-shadow;
+      }
+
+      img {
+        width: 100%;
+        height: 100%;
+      }
+    }
+
+    .g-desc {
+      text-align: center;
+
+      &__role {
+        text-decoration: underline;
+      }
+    }
+
+    .plus-container {
+      overflow: auto;
+      height: 100%;
+      background-color: $palette-blue;
+
+      .square {
+        user-select: none;
+        height: 100%;
+        color: white;
+        border: 3px solid white;
+        width: 112px;
+        height: 112px;
+        font-size: 6em;
+        text-align: center;
+        margin: auto;
+        margin-top: 42px;
+
+        .content {
+          display: inline-block;
+          transform: translateY(-11px);
+        }
+      }
+
+      .text {
+        text-align: center;
+        color: white;
+        font-size: 1.2em;
+      }
+    }  
+  }
+}

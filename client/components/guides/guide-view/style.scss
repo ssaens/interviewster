@@ -1,0 +1,36 @@
+@import 'palette.scss';
+
+.guide-view {
+  .header {
+    font-size: 2em;
+    text-transform: uppercase;
+  }
+
+  .section {
+    margin: 12px 0;
+  }
+
+  .skill-tag {
+    display: inline-block;
+    border-radius: 4px;
+    background-color: $palette-lblue;
+    color: white;
+    padding: 4px 16px;
+    transition: 0.1s ease-in-out;
+    margin: 0 4px 4px 4px;
+
+    &:hover {
+      box-shadow: $palette-shadow;
+    }
+  }
+
+  .question-text {
+    font-size: 1em;
+
+    &__input {
+      border: 0;
+      border-top: 1px solid $palette-grey;
+      border-bottom: 1px solid $palette-grey;
+    }
+  }
+}

@@ -9,6 +9,7 @@ import admin from './admin';
 import auth from './auth';
 import common from './common';
 import guide from './guide';
+import guides from './guides';
 
 const history = createHistory();
 
@@ -17,6 +18,7 @@ const reducer = combineReducers({
   auth,
   common,
   guide,
+  guides,
   router: connectRouter(history)
 });
 

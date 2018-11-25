@@ -6,6 +6,7 @@
   
   .selected-skill-tag {
     font-size: 0.9em;
+    color: white;
     background-color: $palette-lblue;
     display: inline-block;
     margin: 0 4px 4px 4px;
@@ -27,7 +28,7 @@
       transform: translateY(-45%);
 
       &:hover {
-        color: $palette-white;
+        color: black;
       }
     }
   }
