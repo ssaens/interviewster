@@ -46,7 +46,7 @@ const mapDispatchToProps = dispatch => ({
   autoSuggest: q => dispatch(autoSuggestThunk(q)),
   clearSuggest: () => {
     dispatch({
-      GUIDE_SKILL_AUTOSUGGEST, subtype: ASYNC_START, payload: ''
+      type: GUIDE_SKILL_AUTOSUGGEST, subtype: ASYNC_START, payload: ''
     });
     dispatch({
       type: GUIDE_SKILL_AUTOSUGGEST, subtype: ASYNC_END, payload: null
