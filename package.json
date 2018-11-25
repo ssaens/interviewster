@@ -6,7 +6,8 @@
   "scripts": {
     "watch": "node scripts/watch",
     "build": "node scripts/build",
-    "start": "node scripts/build && node server"
+    "heroku-postbuild": "node scripts/build",
+    "start": "node server"
   },
   "author": "",
   "license": "ISC",
