@@ -60,6 +60,7 @@ const mapDispatchToProps = dispatch => ({
 class SelectSkills extends React.PureComponent {
   render() {
     const { duration, skills, suggestions, loaded, featuredSkills, onAdd, onRemove } = this.props;
+    const filteredSuggests = suggestions && suggestions.filter(s => !skills.find(ss => ss._id === s._id));
     return (
       <div className='select-skills'>
         <div className='ss-selections'>
@@ -92,7 +93,7 @@ class SelectSkills extends React.PureComponent {
             onChange={this.onQueryChange}
           />
           <div className='suggestions'>
-            {suggestions && <SkillBox skills={suggestions} onClick={onAdd} />}
+            {filteredSuggests && <SkillBox skills={filteredSuggests} onClick={onAdd} />}
           </div>
         </div>
         <div className='ss-featured'>
