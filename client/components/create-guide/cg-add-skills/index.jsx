@@ -72,6 +72,7 @@ const loadFeaturedThunk = () => dispatch => {
 const mapStateToProps = state => ({
   role: state.guide.model.role,
   skills: state.guide.model.skills,
+  duration: state.guide.model.duration,
   featuredSkills: state.guide.meta.featuredSkills,
   loadedSkills: state.guide.meta.loadedSkills,
   meta: state.guide.meta,
@@ -198,6 +199,7 @@ class CGAddSkills extends React.PureComponent {
                 loaded={loadedSkills} 
                 onAdd={this.props.onAddSkill}
                 onRemove={this.props.onRemoveSkill}
+                duration={this.props.duration}
               />
             </div>
             <div className='cgws-nav rel'>

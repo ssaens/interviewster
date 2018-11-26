@@ -61,7 +61,8 @@ class DefineRubric extends React.PureComponent {
                   { name: '45 min', value: 45 },
                   { name: '1 hour', value: 60 }
                 ]}
-                defaultItem={{ name: '30 min', value: 30 }}
+                selected={model.duration}
+                defualtValue={30}
                 onSelect={onSelectDuration}
               />
             </div>

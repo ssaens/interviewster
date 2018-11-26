@@ -59,7 +59,7 @@ const mapDispatchToProps = dispatch => ({
 
 class SelectSkills extends React.PureComponent {
   render() {
-    const { skills, suggestions, loaded, featuredSkills, onAdd, onRemove } = this.props;
+    const { duration, skills, suggestions, loaded, featuredSkills, onAdd, onRemove } = this.props;
     return (
       <div className='select-skills'>
         <div className='ss-selections'>
@@ -79,7 +79,8 @@ class SelectSkills extends React.PureComponent {
                   { name: '45 min', value: 45 },
                   { name: '1 hour', value: 60 }
                 ]}
-                defaultItem={{ name: '30 min', value: 30 }}
+                selected={duration}
+                defaultValue={30}
                 onSelect={this.onSelectDuration}
               />
             </div>

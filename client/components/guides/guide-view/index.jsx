@@ -6,6 +6,12 @@ import './style.scss';
 import Rubric from '../../create-guide/questions/question/rubric';
 import { admin } from 'fetch';
 
+const DURATION_TO_STRING_MAP = {
+  30: '30 minutes',
+  45: '45 minutes',
+  60: '1 hour'
+};
+
 const Field = props => (
   <div className='field'>
     <span className='field__name bold'>{props.name}: </span>
@@ -70,6 +76,7 @@ class GuideView extends React.Component {
         <div className='section'>
           <Field name='Created On' value={toDisplayDate(this.state.model.createdAt)} />
           <Field name='Author' value={this.state.model.author.username} />
+          <Field name='Duration' value={DURATION_TO_STRING_MAP[this.state.model.duration]} />
         </div>
         <div className='section'>
           <div className='bold'>

@@ -12,7 +12,7 @@ class DropDown extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      selected: props.defaultItem,
+      selected: props.selected || props.defaultValue,
       open: false
     };
   }
@@ -34,7 +34,7 @@ class DropDown extends React.Component {
           className={classNames('ui-drop-down__selected rel', { open })} 
           onClick={this.toggle}
         >
-          {selected.name}
+          {items.find(i => i.value === selected).name}
           <span className='toggle-icon'>
             <i className='icon ion-ios-arrow-down' />
           </span>
@@ -50,7 +50,7 @@ class DropDown extends React.Component {
 
   onSelect = item => {
     this.setState({ 
-      selected: item,
+      selected: item.value,
       open: false
     }, () => this.props.onSelect(item.value));
   }
